@@ -13,7 +13,7 @@ type ErrorData = {
   body: string
 }
 
-export default async function handler(
+export default async function handler( //make this async as it is going to fetch in data..>
   req: NextApiRequest,
   res: NextApiResponse<Data | ErrorData>
 ) {
@@ -21,9 +21,11 @@ export default async function handler(
   if(req.method !== 'POST') {
     res.status(405).json({ body: 'Method Not Allowed'})
     return;
-  }
+  } //if the method is not a post request
 
     const {message} = req.body;
+    // ....> copying the old content
+    // and replacing the created_at with that of vthe server
     const newMessage = {
       ...message,
       created_at: Date.now()
@@ -39,5 +41,5 @@ export default async function handler(
 // // });
 
   
-  res.status(200).json({ message:  newMessage})
+  res.status(200).json({ message:  newMessage}) //return messages as new messages
 }

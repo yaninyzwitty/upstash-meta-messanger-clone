@@ -1,4 +1,3 @@
-import { resolveSoa } from 'dns'
 import { unstable_getServerSession } from 'next-auth'
 import React from 'react'
 import { Message } from '../typings'
